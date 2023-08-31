@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards, Patch, Body, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Param, UseGuards, Patch, Body, Delete } from '@nestjs/common';
 import { UserService } from './user.service';
 import { JwtGuard } from 'src/auth/guard';
 import { GetUser } from 'src/auth/decorator';
@@ -8,18 +8,34 @@ import { EditUserDto } from './dto';
 @Controller('users')
 export class UserController {
     constructor(private userService: UserService){}
+    
     @Get('me')
     getMe(@GetUser() user: User){
         return user;
     }
 
     @Patch()
-    editUser(@Body() dto:EditUserDto, @GetUser('id') userId: number){
-        return this.userService.editUser(userId, dto)
+    editUser(@Body() dto: EditUserDto, @GetUser('id') userId: number){
+        return this.userService.editUser(userId, dto);
     }
 
     @Delete()
-    deleteUser(@GetUser('id') userId:number){
-        return this.userService.deleteUser(userId)
+    deleteUser(@GetUser('id') userId: number){
+        return this.userService.deleteUser(userId);
+    }
+
+    @Delete(':id')
+    deleteUserById(@GetUser('id') userId: number){
+        return this.userService.deleteUser(userId);
+    }
+
+    @Post(':id/follow')
+    followUser(@GetUser('id') userId: number, @Param('id') targetUserId: number){
+        return this.userService.addFollower(userId, targetUserId);
+    }
+
+    @Post(':id/unfollow')
+    unfollowUser(@GetUser('id') userId: number, @Param('id') targetUserId: number){
+        return this.userService.removeFollower(userId, targetUserId);
     }
 }
