@@ -8,7 +8,7 @@ import { UserService } from 'app/services/user.service';
   templateUrl: './following-list.component.html',
   styleUrls: ['./following-list.component.css']
 })
-export class FollowersListComponent implements OnInit {
+export class FollowingListComponent implements OnInit {
     @Input() currentUser: User = {} as User
 
     following$: Observable<User[]> = of([]);

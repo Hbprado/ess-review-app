@@ -19,6 +19,8 @@ import { RouterModule } from '@angular/router';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { UserHomeComponent } from './components/user-home/user-home.component';
+import { FollowingListComponent } from './components/profile/followinglist/following-list.component';
+import { FollowersListComponent } from './components/profile/followerlist/follower-list.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,12 @@ import { UserHomeComponent } from './components/user-home/user-home.component';
       },
       {
         path: 'home/:id', component: UserHomeComponent,
+      },
+      {
+        path: 'following', component: FollowingListComponent,
+      },
+      {
+        path: 'followers', component: FollowersListComponent,
       }
     ])
   ],
