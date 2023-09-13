@@ -4,7 +4,9 @@
   <hr>
 
   <!-- Botão para seguir/parar de seguir -->
-  <ng-container *ngIf="isFollowing; then unfollowButton else followButton"></ng-container>
+  <ng-container *ngIf="isFollowing$ | async; then unfollowButton else followButton">
+    button renders here
+  </ng-container>
 
   <!-- Exibição do número de seguidores -->
   <div>

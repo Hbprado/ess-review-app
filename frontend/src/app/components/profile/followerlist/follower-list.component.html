@@ -5,8 +5,8 @@
     <img [src]="follower.img" width="50px">
     {{ follower.username }} tem <strong>{{ followerCount$ | async }}</strong> seguidores
     
-    <ng-container *ngIf="isFollowing; then unfollowButton else followButton">
-      <button class="button is-warning" (click)="toggleFollow()">Parar de Seguir</button>
+    <ng-container *ngIf="isFollowing$ | async; then unfollowButton else followButton">
+      button renders here
     </ng-container>
 
   </div>

@@ -3,8 +3,8 @@
   <div class="profile">
     <img [src]="followedUser.img" width="50px">
     {{ followedUser.username }} esta seguindo voce
-    <ng-container *ngIf="isFollowing; then unfollowButton else followButton">
-      <button class="button is-warning" (click)="toggleFollow()">Parar de Seguir</button>
+    <ng-container *ngIf="isFollowing$ | async; then unfollowButton else followButton">
+      button renders here
     </ng-container>
 </div>
 
