@@ -1,0 +1,13 @@
+<h2>Seguindo</h2>
+<div *ngFor="let followedUser of following$ | async">
+  <div class="profile">
+    <img [src]="followedUser.img" width="50px">
+    {{ followedUser.username }} esta seguindo voce
+    <ng-container *ngIf="isFollowing$ | async; else followButton">
+      <button class="button is-warning" (click)="toggleFollow()">Unfollow</button>
+    </ng-container>
+    <ng-template #followButton>
+      <button class="button is-info" (click)="toggleFollow()">Follow</button>
+    </ng-template>
+  </div>
+</div>
