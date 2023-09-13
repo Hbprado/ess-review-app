@@ -4,10 +4,19 @@
     <img [src]="followedUser.img" width="50px">
     {{ followedUser.username }} esta seguindo voce
     <ng-container *ngIf="isFollowing$ | async; else followButton">
-      <button class="button is-warning" (click)="toggleFollow()">Unfollow</button>
+      <button class="button is-warning" (click)="toggleFollow()">Parar de Seguir</button>
     </ng-container>
     <ng-template #followButton>
-      <button class="button is-info" (click)="toggleFollow()">Follow</button>
+      <button class="button is-info" (click)="toggleFollow()">Seguir</button>
     </ng-template>
   </div>
 </div>
+
+  <ng-template #followButton>
+    <button class="button is-info" (click)="toggleFollow()">Seguir</button>
+  </ng-template>
+  
+  <ng-template #unfollowButton>
+    <button class="button is-warning" (click)="toggleFollow()">Parar de Seguir</button>
+  </ng-template>
+  
