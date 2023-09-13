@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   @Input() currentUser: User = {} as User; // usuário logado
 
   followerCount$: Observable<number> = of(0);
-  isFollowing$: Observable<boolean> = of(false);
+  isFollowing: Observable<boolean> = of(false);
   followers$: Observable<User[]> = of([]);
   following$: Observable<User[]> = of([]);
 
@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
 
     // Verifica se o usuário atualmente logado está seguindo este usuário.
     this.userService.isFollowing(currentUserId, userId).subscribe((isFollowing: boolean) => {
-      this.isFollowing$ = of(isFollowing);
+      this.isFollowing = of(isFollowing);
     });
 
     // Recupera a contagem de seguidores para o perfil do usuário.
@@ -52,13 +52,13 @@ export class ProfileComponent implements OnInit {
       if (isFollowing) {
         // Deixar de seguir o usuário
         this.userService.removeFollower(userId, currentUserId).subscribe(() => {
-          this.isFollowing$ = of(false);
+          this.isFollowing = of(false);
           this.followerCount$ = this.followerCount$.pipe(map(count => count - 1));
         });
       } else {
         // Seguir o usuário
         this.userService.addFollower(userId, currentUserId).subscribe(() => {
-          this.isFollowing$ = of(true);
+          this.isFollowing = of(true);
           this.followerCount$ = this.followerCount$.pipe(map(count => count + 1));
         });
       }
