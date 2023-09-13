@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { User } from '@prisma/client';
 
 @Injectable({
   providedIn: 'root'
@@ -35,4 +36,5 @@ export class UserService {
   getFollowersCount(userId: number): Observable<number> {
     return this.http.get<number>(`${this.baseUrl}/users/${userId}/followers/count`);
   }
+
 }
