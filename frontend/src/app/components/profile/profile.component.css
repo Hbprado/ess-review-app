@@ -27,7 +27,7 @@ body {
     height: 188px;
     object-fit: cover;
   }
-  .heitor {
+  .username {
     position: absolute;
     top: 373px;
     left: 337px;
@@ -86,7 +86,7 @@ body {
     height: 150px;
     object-fit: cover;
   }
-  .heitor1 {
+  .username1 {
     position: absolute;
     top: 15px;
     left: 190px;
