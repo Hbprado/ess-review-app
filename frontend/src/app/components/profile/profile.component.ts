@@ -56,7 +56,6 @@ export class ProfileComponent implements OnInit {
       map(isFollowing => (isFollowing ? 'Parar de seguir' : 'Seguir'))
     );
   }
-
   toggleFollow() {
     const userId = this.user.id;
     const currentUserId = this.currentUser.id;
@@ -75,6 +74,5 @@ export class ProfileComponent implements OnInit {
           this.followerCount$ = this.followerCount$.pipe(map(count => count + 1));
         });
       }
-    });
-  }
-}
+      
+    })}};

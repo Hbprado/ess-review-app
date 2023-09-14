@@ -1,19 +1,63 @@
-<div class="profile-container">
-  
-  <div class="profile-actions">
-    <button (click)="toggleFollow()">
-      {{ followButtonLabel | async }}
-    </button>
-  </div>
-  
-  <div class="profile-stats">
-    <div class="followers">
-      <span>{{ followerCount$ | async }}</span>
-      <a routerLink="/followers">Seguidores</a>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+
+    <link rel="stylesheet" href="./profile.component.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap"
+    />
+  </head>
+    <div class="perfil">
+      <img class="image-7-icon" alt="" src="../../../assets/userIcon.png" />
+
+      <div class="heitor">Heitor</div>
+      <div class="perfil-child"></div>
+       <div class="filmes" style="text-decoration: none">FILMES </div>
+      <div class="reviews" style="text-decoration: none">REVIEWS</div>
+      <div class="logo">
+      <img
+        class="logo-icon"
+        alt=""
+        src="../../../assets/icon.png"
+      /></div>
+
+      
+
+      <div class="image-7-parent">
+        <img class="image-7-icon1" alt="" src="../../../assets/userIcon.png" />
+
+        <div class="heitor1">Heitor</div>
+        <img class="frame-child" alt="" src="./public/undefined3.png" />
+      </div>
+      <div class="seus-contedos">Seus conteúdos</div>
+      <div class="perfil-item"></div>
+      <div class="batman-o-cavaleiro-container">
+        <p class="batman-o-cavaleiro">Batman: o cavaleiro das trevas</p>
+        <p class="batman-o-cavaleiro">&nbsp;</p>
+      </div>
+      
     </div>
-    <div class="following">
-      <span>{{ followingCount$ | async }}</span>
-      <a routerLink="/following">Seguindo</a>
+    
+    <div class="profile-container">
+      <div class="profile-actions">
+        <button (click)="toggleFollow()">
+          {{ followButtonLabel | async }}
+        </button>
+      </div>
+      
+      <div class="profile-stats">
+        <div class="followers">
+          <span>{{ followerCount$ | async }}</span>
+          <a routerLink="/followers">Seguidores</a>
+        </div>
+        <div class="following">
+          <span>{{ followingCount$ | async }}</span>
+          <a routerLink="/following">Seguindo</a>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+    
+
+</html>
