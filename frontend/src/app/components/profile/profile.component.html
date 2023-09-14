@@ -1,44 +1,19 @@
-<p>profile works!</p>
-<div>
-  Você está logado como <strong>{{ currentUser.username }}</strong>
-  <hr>
-
-  <!-- Botão para seguir/parar de seguir -->
-  <ng-container *ngIf="isFollowing$ | async; then unfollowButton else followButton">
-    button renders here
-  </ng-container>
-
-  <!-- Exibição do número de seguidores -->
-  <div>
-    {{ followerCount$ | async }} seguidores
+<div class="profile-container">
+  
+  <div class="profile-actions">
+    <button (click)="toggleFollow()">
+      {{ followButtonLabel | async }}
+    </button>
   </div>
-
-  <!-- Exibição do número de seguidos -->
-  <div>
-    {{ followingCount$ | async }} seguindo
-  </div>
-
-  <!-- Texto 'seguidores' clicável para redirecionar para a página de seguidores -->
-  <a routerLink="/followers">seguidores</a>
-
-  <!-- Texto 'seguindo' clicável para redirecionar para a página de seguindo -->
-  <a routerLink="/following">seguindo</a>
-
-  <!-- Loop para exibir perfis de usuários -->
-  <div *ngFor="let user of users | async">
-    <profile [user]="user" [currentUser]="currentUser"></profile>
+  
+  <div class="profile-stats">
+    <div class="followers">
+      <span>{{ followerCount$ | async }}</span>
+      <a routerLink="/followers">Seguidores</a>
+    </div>
+    <div class="following">
+      <span>{{ followingCount$ | async }}</span>
+      <a routerLink="/following">Seguindo</a>
+    </div>
   </div>
 </div>
-
-<ng-template #followButton>
-  <button class="button is-info" (click)="toggleFollow()">Seguir</button>
-</ng-template>
-
-<ng-template #unfollowButton>
-  <button class="button is-warning" (click)="toggleFollow()">Parar de seguir</button>
-</ng-template>
-
-
-
-
-

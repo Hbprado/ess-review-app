@@ -37,4 +37,8 @@ export class UserService {
     return this.http.get<number>(`${this.baseUrl}/users/${userId}/followers/count`);
   }
 
+  getFollowingCount(userId: number): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/users/${userId}/following/count`);
+  }
+
 }

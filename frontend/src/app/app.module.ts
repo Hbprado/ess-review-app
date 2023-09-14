@@ -21,6 +21,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { UserHomeComponent } from './components/user-home/user-home.component';
 import { FollowingListComponent } from './components/profile/followinglist/following-list.component';
 import { FollowersListComponent } from './components/profile/followerlist/follower-list.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { FollowersListComponent } from './components/profile/followerlist/follow
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CommonModule,
     RouterModule.forRoot([
       {
         path:'', component :HomeComponent,
@@ -64,7 +66,10 @@ import { FollowersListComponent } from './components/profile/followerlist/follow
       },
       {
         path: 'followers', component: FollowersListComponent,
-      }
+      },
+      {
+        path: 'profile', component : ProfileComponent,
+      },
     ])
   ],
   providers: [],

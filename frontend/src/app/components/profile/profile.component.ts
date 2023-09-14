@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
   @Input() user: User = {} as User; // O usuário que pode ser seguido
   @Input() currentUser: User = {} as User; // usuário logado
 
+  followingCount$: Observable<number> = of(0);
   followerCount$: Observable<number> = of(0);
   isFollowing$: Observable<boolean> = of(false);
   followers$: Observable<User[]> = of([]);
@@ -33,6 +34,10 @@ export class ProfileComponent implements OnInit {
       this.followerCount$ = of(count);
     });
 
+    this.userService.getFollowingCount(currentUserId).subscribe((count: number) => {
+      this.followingCount$ = of(count);
+    });
+
     // Recupera os seguidores do usuário.
     this.userService.getFollowers(currentUserId).subscribe((followers: User[]) => {
       this.followers$ = of(followers);
@@ -42,6 +47,14 @@ export class ProfileComponent implements OnInit {
     this.userService.getFollowing(currentUserId).subscribe((following: User[]) => {
       this.following$ = of(following);
     });
+
+    
+  }
+
+  get followButtonLabel(): Observable<string> {
+    return this.isFollowing$.pipe(
+      map(isFollowing => (isFollowing ? 'Parar de seguir' : 'Seguir'))
+    );
   }
 
   toggleFollow() {
