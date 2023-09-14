@@ -26,10 +26,10 @@
       
 
       <div class="image-7-parent">
-        <img class="image-7-icon1" alt="" src="../../../assets/userIcon.png" />
+        <img class="mini-icone" alt="" src="../../../assets/userIcon.png" />
 
         <div class="heitor1">Heitor</div>
-        <img class="frame-child" alt="" src="./public/undefined3.png" />
+        <img class="setinha" alt="" src="./public/undefined3.png" />
       </div>
       <div class="seus-contedos">Seus conteúdos</div>
       <div class="perfil-item"></div>
@@ -42,7 +42,7 @@
     
     <div class="profile-container">
       <div class="profile-actions">
-        <button (click)="toggleFollow()">
+        <button *ngIf="user.id !== currentUser.id"(click)="toggleFollow()">
           {{ followButtonLabel | async }}
         </button>
       </div>
