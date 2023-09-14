@@ -99,12 +99,12 @@ body {
     width: 101px;
     height: 42px;
   }
-  .frame-child,
+  .setinha,
   .image-7-parent {
     position: absolute;
     overflow: hidden;
   }
-  .frame-child {
+  .setinha {
     top: 36px;
     left: 230px;
     width: 21px;
