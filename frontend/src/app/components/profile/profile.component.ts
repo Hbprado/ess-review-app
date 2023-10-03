@@ -104,6 +104,16 @@ export class ProfileComponent implements OnInit {
     return this.authService.createContent(contentDto).subscribe();
   }
 
+  removeUser(){
+    this.userService.deleteUser()
+    .subscribe({
+      next: res =>{
+        this.router.navigate(['/']);
+      },
+      error: err => console.error(err),
+    })
+  }
+
   redirectToHome(event: Event) {
     event.preventDefault();
     this.router.navigate(['/']);

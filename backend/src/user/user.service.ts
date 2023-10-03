@@ -20,12 +20,18 @@ export class UserService {
     return user;
   }
 
-  async deleteUser(userId: number): Promise<User>{
+  async deleteUser(userId: number): Promise<User> {
+    await this.prisma.content.deleteMany({
+      where: {
+        userId: userId,
+      },
+    });
+  
     return this.prisma.user.delete({
       where: {
         id: userId,
-      }
-    })
+      },
+    });
   }
   //User (Seguidos/Amigos)
       async addFollower(userId: number, followerId: number): Promise<void> {
